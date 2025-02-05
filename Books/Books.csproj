@@ -33,6 +33,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Books.Data\Books.Data.csproj" />
     <ProjectReference Include="..\Books.Domain\Books.Domain.csproj" />
+    <ProjectReference Include="..\Books.Interfaces\Books.Interfaces.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\images\products\" />
