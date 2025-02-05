@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Books.Domain.Entities.Product>
+@using Books.Domain.Entities;
+@using Books.Domain.Utilities
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "Books";
+#pragma warning disable
+}
+
+
+<br />
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-6 col-lg-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white" style="background-color:dimgray;">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @product.Title
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+
+                    <img src="@product.ImageUrl" alt="@product.Title" class="w-100 h-equal">
+                    <div class="col-md">
+                        <div class="card-body">
+                            <p class="card-text"><b>Category: </b>@product.Category.Name</p>
+                            <p class="card-text"><b>Author: </b>@product.Author.FullName</p>
+                            <p class="card-text"><b>Price:</b>@product.Price.ToString("c")</p>
+                            <p class="card-text"><b>As low as: </b>@(((product.Price)*(Rabat.DISCOUNT)).ToString("c"))</p>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between">
+
+                        <a class="btn btn-dark" style="width: 100%; margin-left: 4%;" asp-action="Details" asp-route-productId="@product.Id">
+                            Details
+                        </a>
+                        <br />
+                    </div>
+                    <div style="margin: auto; margin-left:35%; margin-bottom:5%;">
+                        @if (product.InStock > 0)
+                        {
+                            <span class="badge bg-dark w-25" style="height:22px;">
+                                Available: @product.InStock
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger w-25" style="height:22px;">
+                                <strike>Available: 0</strike>
+                            </span>
+                        }
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
