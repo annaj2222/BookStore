@@ -49,6 +49,14 @@
                         </a>
                     </li>
 
+
+                    <li class="nav-item px-2">
+                        <a class="nav-link" asp-area="Admin" asp-controller="FriendStore" asp-action="Index">
+                            Friend Store
+                        </a>
+                    </li>
+
+
                 }
                 else if ((!User.IsInRole(Roles.RoleType.Admin.ToString()) || !User.IsInRole(Roles.RoleType.SuperAdmin.ToString())) && User.Identity.IsAuthenticated)
                 {

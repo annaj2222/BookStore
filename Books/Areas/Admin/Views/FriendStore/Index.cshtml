@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Books.Domain.Entities.Friends.Book>
+
+@{
+    ViewData["Title"] = "Friends Book Store";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+    <div class="row">
+        @foreach (var book in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="@book.CoverImage" class="card-img-top" alt="Book Cover" />
+                    <div class="card-body">
+                        <h5 class="card-title">@book.Title</h5>
+                        <p class="card-text">
+                            <strong>Author:</strong> @book.Author?.FullName<br />
+                            <strong>ISBN:</strong> @book.ISBN<br />
+                            <strong>Price:</strong> $@book.Price<br />
+                            <strong>Rating:</strong> @book.Rating <span class="text-warning">⭐</span><br />
+                            <strong>Genre:</strong> @book.Genre
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

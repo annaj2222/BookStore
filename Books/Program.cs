@@ -21,6 +21,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
     builder.Configuration.GetConnectionString("DefaultConnection"),
     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName))
 );
+builder.Services.AddDbContext<TheirDbContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("DefaultConnection2"),
+    b => b.MigrationsAssembly(typeof(TheirDbContext).Assembly.FullName))
+);
 
 // Bind stripe settings
 builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("StripeSettings"));
